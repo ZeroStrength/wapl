@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="wapl",
-    version="0.0.1",
+    version="0.0.2",
     author="Changyun Lee",
     author_email="brownbearpower@gmail.com",
     description="TMAX WAPL testing package",
