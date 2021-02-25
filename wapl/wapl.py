@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from time import sleep
 
 SPACE_LIST_URL = 'https://wapl.ai/spaces'
 
@@ -22,12 +23,21 @@ class WAPL:
             if space.text == name:
                 space.click()
                 return
+    def click_nth_navbar(self, index):
+        nav_list = self.browser.find_element_by_class_name('ant-tabs-nav-list')
+        nav_list.find_elements_by_class_name('ant-tabs-tab')[index].click()
     def goto_friends_list(self):
-        pass
+        self.click_nth_navbar(0)
     def goto_rooms_list(self):
-        pass
-    def send_talk_msg_to_nth_room(self, msg, index):
-        pass
+        self.click_nth_navbar(1)
+    def goto_mail_list(self):
+        self.click_nth_navbar(2)
+    def goto_nth_room(self, index):
+        left_panel = self.browser.find_element_by_id('rc-tabs-0-panel-s')
+        left_panel.find_elements_by_class_name('ant-list-item-meta-title')[index].click()
+    def send_talk_msg(self, msg):
+        editor = self.browser.find_element_by_class_name('ql-editor')
+        self.browser.execute_script("arguments[0].innerText = '"+msg+"'", editor)
+        editor.send_keys(Keys.ENTER)
     def quit(self):
         self.browser.quit()
-
