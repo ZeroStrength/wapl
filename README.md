@@ -30,3 +30,24 @@ sleep(5)
 # enter space
 bot.enter_space_by_name('tmax')
 ```
+
+### App interactions
+#### Navbar click
+```
+bot.goto_friends_list()
+
+bot.goto_rooms_list()
+
+bot.goto_mail_list()
+```
+#### Room
+```
+# enter first room
+bot.goto_nth_room(0)
+```
+
+#### Talk
+```
+# Send talk message (!you must be in room)
+bot.send_talk_msg('hi')
+```
